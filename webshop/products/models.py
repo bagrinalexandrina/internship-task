@@ -6,6 +6,7 @@ class Product(models.Model):
     description = models.CharField(max_length=400)
     created = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='products', default='no_picture.png')
+    sku = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.id}. {self.name} - {self.created.strftime('%d/%m/%y')}"

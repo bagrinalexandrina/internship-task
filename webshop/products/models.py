@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
@@ -10,3 +12,11 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.id}. {self.name} - {self.created.strftime('%d/%m/%y')}"
+
+
+class ProductImage(models.Model):
+    link = models.TextField()
+    product_image = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='image')
+
+    def __str__(self):
+        return f"{self.id}. {self.link}; {self.product_image}"

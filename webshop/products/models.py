@@ -14,9 +14,9 @@ class Product(models.Model):
         return f"{self.id}. {self.name} - {self.created.strftime('%d/%m/%y')}"
 
 
-class ProductImage(models.Model):
+class ProductPhoto(models.Model):
     link = models.TextField()
-    product_image = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='image')
+    pictures = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='+')
 
     def __str__(self):
-        return f"{self.id}. {self.link}; {self.product_image}"
+        return f"{self.id}. {self.link}; {self.pictures}"

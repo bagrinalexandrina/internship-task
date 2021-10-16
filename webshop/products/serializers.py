@@ -1,15 +1,15 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import fields, serializers
-from products.models import Product, ProductImage
+from products.models import Product, ProductPhoto
 
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = ['name', 'sku', 'price', 'description', 'created']
 
-class ProductImageSerializer(ModelSerializer):
+class ProductPhotoSerializer(ModelSerializer):
     class Meta:
-        model = ProductImage
-        fields = ['link', 'product_image']
+        model = ProductPhoto
+        fields = ['link', 'pictures']
 
 

@@ -7,7 +7,6 @@ class Product(models.Model):
     price = models.FloatField(help_text='in US dolars')
     description = models.CharField(max_length=400)
     created = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='products', default='no_picture.png')
     sku = models.CharField(max_length=100)
 
     def __str__(self):
@@ -16,7 +15,8 @@ class Product(models.Model):
 
 class ProductPhoto(models.Model):
     link = models.TextField()
-    pictures = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='+')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
 
     def __str__(self):
-        return f"{self.id}. {self.link}; {self.pictures}"
+        return f"{self.id}. {self.link}; {self.product}"
+        
